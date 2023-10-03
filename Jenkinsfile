@@ -7,11 +7,30 @@ pipeline {
                 checkout scm
             }
         }
+
+        stage('Install CocoaPods') {
+            steps {
+                script {
+                    // Install CocoaPods
+                    sh 'gem install cocoapods'
+                    
+                    // Verify the installation
+                    def podVersion = sh(script: 'pod --version', returnStatus: true)
+                    
+                    if (podVersion == 0) {
+                        echo "CocoaPods installed successfully."
+                    } else {
+                        error "Failed to install CocoaPods."
+                    }
+                }
+            }
+        }
+
         stage('Pod Install') {
             steps {
                 script {
                     def podVersion = sh(script: 'which pod', returnStdout: true).trim()
-                    echo "CocoaPods Version: ${podVersion}"
+                    echo 'pod install'
                 }
             }
         }
