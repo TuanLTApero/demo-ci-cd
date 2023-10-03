@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        PATH = "/usr/local/bin:$PATH" // Replace with the correct path to pod
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -12,8 +9,10 @@ pipeline {
         }
         stage('Pod Install') {
             steps {
-                // Chạy lệnh pod install
-                sh 'pod install'
+                script {
+                    def podPath = sh(returnStdout: true, script: 'which pod').trim()
+                    sh "${podPath} install"
+                }
             }
         }
         stage('Pod Update') {
