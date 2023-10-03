@@ -36,7 +36,7 @@ pipeline {
                     // Triển khai schema 'dev' lên DeployGate
                     def fastlanePath = '/opt/homebrew/bin/fastlane'  // Replace with the actual path to fastlane
 
-                    sh '${fastlanePath} deploy_to_deploygate'
+                    sh 'fastlane deploy_to_deploygate'
 
                     // Triển khai schema 'product' lên TestFlight
                     // sh 'fastlane deploy_to_testflight'
