@@ -11,8 +11,8 @@ pipeline {
         stage('Install CocoaPods') {
             steps {
                 script {
-                    // Install CocoaPods
-                    sh 'gem install cocoapods'
+                    // Install CocoaPods as a user-level gem
+                    sh 'gem install cocoapods --user-install'
                     
                     // Verify the installation
                     def podVersion = sh(script: 'pod --version', returnStatus: true)
