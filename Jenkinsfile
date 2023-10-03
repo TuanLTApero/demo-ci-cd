@@ -8,15 +8,29 @@ pipeline {
             }
         }
 
-        stage('Pod Install') {
+        stage('Install CocoaPods') {
             steps {
                 script {
-                    def podVersion = sh(script: 'pod --version', returnStdout: true)
-                    echo $podVersion
+                    // Set the PATH to include the directory where CocoaPods is installed
+                    def podPath = sh(returnStdout: true, script: 'which pod').trim()
+                    def podDir = podPath.replace("/bin/pod", "")
+                    env.PATH = "${podDir}:${env.PATH}"
+                    
+                    // Run pod install
                     sh 'pod install'
                 }
             }
         }
+
+        // stage('Pod Install') {
+        //     steps {
+        //         script {
+        //             def podVersion = sh(script: 'pod --version', returnStdout: true)
+        //             echo $podVersion
+        //             sh 'pod install'
+        //         }
+        //     }
+        // }
         stage('Build Dev Schema') {
             steps {
                 // Sử dụng xcodebuild để build schema 'dev'
