@@ -9,16 +9,7 @@ pipeline {
         }
         stage('Pod Install') {
             steps {
-                script {
-                    def podPath = sh(returnStdout: true, script: 'which pod').trim()
-                    sh "${podPath} install"
-                }
-            }
-        }
-        stage('Pod Update') {
-            steps {
-                // Chạy lệnh pod update
-                sh 'pod update'
+                sh 'pod install'
             }
         }
         stage('Build Dev Schema') {
