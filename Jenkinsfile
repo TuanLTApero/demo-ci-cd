@@ -10,8 +10,8 @@ pipeline {
         stage('Pod Install') {
             steps {
                 script {
-                    def podVersion = sh(script: 'pod --version', returnStdout: true).trim()
-                    echo "CocoaPods Version: ${podVersion}"
+                    def podPath = sh(returnStdout: true, script: 'which pod').trim()
+                    echo "${podPath}"
                 }
             }
         }
