@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        // Add the Fastlane tool to the PATH
-        PATH = "${tool name: 'fastlane', type: 'ToolType'}:${env.PATH}"
-    }
 
     stages {
         stage('Checkout') {
