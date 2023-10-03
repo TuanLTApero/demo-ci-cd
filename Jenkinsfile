@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        PATH = "/usr/local/bin:$PATH" // Replace with the correct path to pod
+    }
     stages {
         stage('Checkout') {
             steps {
