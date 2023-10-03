@@ -1,0 +1,34 @@
+# Fastlane Fastfile
+
+# Cài đặt biến môi trường chung
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and deploy to DeployGate"
+  lane :deploy_to_deploygate do
+    deploygate(
+      api_key: "eb9de6b2-72a2-4a68-adda-75b80a2e47b2",
+      message: "Changelog message for this build",
+      notes: "Release notes for this build",
+      file: "/Users/macapero/desktop/app.ipa"
+    )
+  end
+
+  desc "Build and deploy to TestFlight"
+  lane :deploy_to_testflight do
+    # Thay thế bằng thông tin xác thực và tùy chọn triển khai TestFlight của bạn
+    pilot(
+      app_identifier = credentials(:appfile)[:app_identifier],
+      apple_id = credentials(:appfile)[:apple_id],
+      distribute_external: false,
+      groups: ["Test"],
+      # Các tùy chọn khác
+    )
+  end
+
+  desc "Build and deploy to both DeployGate and TestFlight"
+  lane :deploy_to_both do
+    deploy_to_deploygate
+    deploy_to_testflight
+  end
+end
