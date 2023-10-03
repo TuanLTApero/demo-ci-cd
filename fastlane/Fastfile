@@ -9,11 +9,11 @@ platform :ios do
     gym(
         scheme: 'demo-ci-cd-dev', # Replace with your scheme name
         export_options: {
-    provisioningProfiles: {
-      'com.khactao.testicid': '4e7a7a76-fe34-46f0-bf9d-e6da918a7a99'
-    }
-  }
-),
+            provisioningProfiles: {
+                'com.khactao.testicid': '4e7a7a76-fe34-46f0-bf9d-e6da918a7a99'
+            }
+        }
+    )
     deploygate(
       scheme: 'demo-ci-cd-dev',
       api_key: "eb9de6b2-72a2-4a68-adda-75b80a2e47b2",
