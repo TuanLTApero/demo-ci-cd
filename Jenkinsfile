@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        // Đặt biến môi trường ở đây nếu cần
-    }
     stages {
         stage('Checkout') {
             steps {
