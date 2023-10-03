@@ -11,13 +11,13 @@ pipeline {
         stage('Build Dev Schema') {
             steps {
                 // Sử dụng xcodebuild để build schema 'dev'
-                sh 'xcodebuild -workspace demo-ci-cd.xcworkspace -scheme demo-ci-cd-dev -destination "platform=iOS Simulator,name=iPhone 11" build'
+                sh 'xcodebuild -workspace demo-ci-cd.xcworkspace -scheme demo-ci-cd-dev -destination "platform=iOS Simulator,name=iPhone 11" -allowProvisioningUpdates build'
             }
         }
         stage('Build Product Schema') {
             steps {
                 // Sử dụng xcodebuild để build schema 'product'
-                sh 'xcodebuild -workspace demo-ci-cd.xcworkspace -scheme demo-ci-cd -destination "platform=iOS Simulator,name=iPhone 11" build'
+                sh 'xcodebuild -workspace demo-ci-cd.xcworkspace -scheme demo-ci-cd -destination "platform=iOS Simulator,name=iPhone 11" -allowProvisioningUpdates build'
             }
         }
         stage('Deploy') {
