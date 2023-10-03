@@ -6,6 +6,9 @@ default_platform(:ios)
 platform :ios do
   desc "Build and deploy to DeployGate"
   lane :deploy_to_deploygate do
+    gym(
+        scheme: 'demo-ci-cd-dev'
+    )
     deploygate(
       api_key: "eb9de6b2-72a2-4a68-adda-75b80a2e47b2",
       message: "Changelog message for this build",
@@ -16,6 +19,9 @@ platform :ios do
 
   desc "Build and deploy to TestFlight"
   lane :deploy_to_testflight do
+    gym(
+        scheme: 'demo-ci-cd'
+    )
     # Thay thế bằng thông tin xác thực và tùy chọn triển khai TestFlight của bạn
     pilot(
       app_identifier = credentials(:appfile)[:app_identifier],
