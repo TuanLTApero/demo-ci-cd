@@ -21,6 +21,12 @@ pipeline {
         //         sh 'xcodebuild -workspace demo-ci-cd.xcworkspace -scheme demo-ci-cd -destination "platform=iOS Simulator,name=iPhone 11" -allowProvisioningUpdates build'
         //     }
         // }
+        stage('Check Fastlane Installation') {
+            steps {
+                sh 'fastlane --version'
+            }
+        }
+
         stage('Deploy') {
             when {
                 // Chỉ triển khai nếu bước build thành công
