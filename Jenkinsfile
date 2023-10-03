@@ -8,16 +8,6 @@ pipeline {
             }
         }
 
-        stage('Echo pod Path') {
-            steps {
-                script {
-                    def podPath = sh(script: 'which pod', returnStdout: true).trim()
-                    echo "Path to 'pod' executable: ${podPath}"
-                }
-            }
-        }
-
-
         stage('Build Dev Schema') {
             steps {
                 // Sử dụng xcodebuild để build schema 'dev'
