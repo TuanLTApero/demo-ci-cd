@@ -1,14 +1,5 @@
 pipeline {
     agent any
-    environment {
-PATH =  "$HOME/.fastlane/bin:" +
-                "$HOME/.rvm/gems/ruby-2.6.3/bin:" +
-                "$HOME/.rvm/gems/ruby-2.6.3@global/bin:" +
-                "$HOME/.rvm/rubies/ruby-2.6.3/bin:" +
-                "/usr/local/bin:" +
-                "$PATH"
-    }
-
     stages {
         stage('Checkout') {
             steps {
