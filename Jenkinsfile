@@ -8,32 +8,32 @@ pipeline {
             }
         }
 
-        stage('Install CocoaPods') {
-            steps {
-                script {
-                    // Install CocoaPods using Homebrew
-                    sh 'brew install cocoapods'
+        // stage('Install CocoaPods') {
+        //     steps {
+        //         script {
+        //             // Install CocoaPods using Homebrew
+        //             sh 'brew install cocoapods'
                     
-                    // Verify the installation
-                    def podVersion = sh(script: 'pod --version', returnStatus: true)
+        //             // Verify the installation
+        //             def podVersion = sh(script: 'pod --version', returnStatus: true)
                     
-                    if (podVersion == 0) {
-                        echo "CocoaPods installed successfully."
-                    } else {
-                        error "Failed to install CocoaPods."
-                    }
-                }
-            }
-        }
+        //             if (podVersion == 0) {
+        //                 echo "CocoaPods installed successfully."
+        //             } else {
+        //                 error "Failed to install CocoaPods."
+        //             }
+        //         }
+        //     }
+        // }
 
-        stage('Pod Install') {
-            steps {
-                script {
-                    def podVersion = sh(script: 'which pod', returnStdout: true).trim()
-                    echo 'pod install'
-                }
-            }
-        }
+        // stage('Pod Install') {
+        //     steps {
+        //         script {
+        //             def podVersion = sh(script: 'which pod', returnStdout: true).trim()
+        //             echo 'pod install'
+        //         }
+        //     }
+        // }
         stage('Build Dev Schema') {
             steps {
                 // Sử dụng xcodebuild để build schema 'dev'
